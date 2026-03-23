@@ -1942,7 +1942,7 @@ which is a contradiction.
 
 
 {\bf Remark:} Theorem~\ref{theorem::strong_dual} shows in particular that if 
-a linear program $\max\{c^t x \mid Ax\leq b\}$ is feasible and unbounded
+a linear program $\max\{c^t x \mid Ax\leq b\}$ is feasible and bounded
 that there is a vector $\tilde x$ with $A\tilde x\leq b$ such that 
 $c^t \tilde x = \sup\{c^t x \mid Ax\leq b\}$.
 
@@ -3427,7 +3427,7 @@ Hence we assume that $m < n$.
 We are interested in vertices of $\{x \in \R^n \mid Ax=b, x \geq 0\}$, so
 in particular, we ask for vectors $x^*\in \R^n$ with  $Ax^* = b$, $x^* \geq 0$
 such that (at least) $n-m$ entries of $x^*$ are zero (since $n$ constraints must
-be satisfied with equality.
+be satisfied with equality).
 
 The {\sc Simplex Algorithm} works on linear programs in standard
 equation form (see (\ref{eq::simplex_standard})).
@@ -3729,7 +3729,7 @@ vertex of $P$ if and only if it is a feasible basic solution.\\
 %which is a contradiction to the assumption that $x'$ is not the
 %convex combination of vectors in $P \setminus\{x'\}$. 
 %``$\Leftarrow$:'' 
-The vector $x'$ is a vertex of $P$ is and only if it is a
+The vector $x'$ is a vertex of $P$ if and only if it is a
 %Let $x'$ be a feasible basic solution with basis $B$.
 %This implies that $x'$ is a feasible solution of the following system
 %of inequalities:
@@ -4066,7 +4066,7 @@ $x^*$ and $z^*$ are also a solution of $T(B)$, and we have
 $z^* = z_0 + r^t x^*_N \leq z_0 = c^t x$.
 
 For the second part, consider the solution $y=A_B^{-t}c_B$. We show that it is feasible to $A^t y\ge c$ and satisfies complementary slackness. The constraints can be partitioned as $A_B^t y\ge c_B$ and $A_N^t y\ge c_N$. By the definition of $y$, we have  $A_B^t y= c_B$. By the definition of $r=c_N-(c_B^t A_B^{-1}A_N)^t=c_N-A_N^t A_B^{-t}c_B=c_N-A_N^t y$, and the requirement $r\le 0$, we have that $A_N^t y\ge c_N$. 
-Moreover, complementary slackness  (Theorem~\ref{theorem::ComplementaySlackness}) adapted to this form asserts that whenever $x$ and $y$ are primal and dual feasible, and $A^t_i y=0$ whenever $x_i>0$, then both of them are optimal. Since every $i$ for which $x_i>0$ is contained in $B$, and $A_B^t y= c_B$, it follows that $x$ and $y$ satisfy complementary slackness.
+Moreover, complementary slackness  (Theorem~\ref{theorem::ComplementaySlackness}) adapted to this form asserts that whenever $x$ and $y$ are primal and dual feasible, and $A^t_i y=c_i$ whenever $x_i>0$, then both of them are optimal. Since every $i$ for which $x_i>0$ is contained in $B$, and $A_B^t y= c_B$, it follows that $x$ and $y$ satisfy complementary slackness.
 \endproof
 
 
@@ -4558,7 +4558,7 @@ In fact, the condition $r \leq 0$ in the simplex tableau $T(B)$ guarantees the
 existence of a dual solution $y$ with $y^t A_B = c_B^t$. 
 In the {\sc Dual Simplex Algorithm}, we start with a feasible basic dual solution,
 i.e.\ a feasible dual solution for which a basis $B$ exists with $y^t A_B = c_B^t$.
-If $c_B^t A_B^{-1}$ is a feasible dual solution,
+If $A_B^{-t} c_B$ is a feasible dual solution,
 we call $B$ a {\em dual feasible basis}.\index{Dual feasible basis}
 Then, we compute the corresponding simplex
 tableau $T(B)$ (which exists for any basis not just a feasible basis).
@@ -6955,7 +6955,7 @@ We noted above that $\sigma_1^t A \sigma_2=\alpha^*$. Hence, \eqref{eq:sigma-1-2
 
 Conversely, let $(\sigma_1,\sigma_2)\in \Delta_1\times \Delta_2$ be any mixed Nash equilibrium. 
 %Let $(\sigma_1^*,\sigma_2^*)$ be a pair of maximin and minimax strategies. Hence, $(\sigma_1^\star)^t A\sigma_2^\star=\alpha^*$. If $\sigma_1^$
- For a contradiction, assume $\sigma_1$ is not a maximin strategy, i.e., it is not optimal to \eqref{eq:max-min-1}. Thus, there exists $\bar\sigma_2$ so that $u_1(\sigma_1,\bar\sigma_2)<\alpha^*$, that is, $u_2(\sigma_1,\bar\sigma_2)>-\alpha^*$. If $u_2(\sigma_1,\sigma_2)\le -\alpha^*$, then $\bar\sigma_2$ is a better response against $\sigma_1$ than $\sigma_2$, a contradiction. Hence, $u_2(\sigma_1,\sigma_2)> -\alpha^*$, that is, $u_1(\sigma_1,\sigma_2)<\alpha$. But this means that for a maximin strategy $\sigma^*_1$ of Player 1, $u_1(\sigma^*_1,\sigma_2)\ge \alpha>u_1(\sigma_1,\sigma_2)$, showing that $\sigma^*_1$ is a better response against $\sigma_2$ than $\sigma_1$, a contradiction. The analogous argument shows that $\sigma_2$ must be a minimax strategy for Player 2.
+ For a contradiction, assume $\sigma_1$ is not a maximin strategy, i.e., it is not optimal to \eqref{eq:max-min-1}. Thus, there exists $\bar\sigma_2$ so that $u_1(\sigma_1,\bar\sigma_2)<\alpha^*$, that is, $u_2(\sigma_1,\bar\sigma_2)>-\alpha^*$. If $u_2(\sigma_1,\sigma_2)\le -\alpha^*$, then $\bar\sigma_2$ is a better response against $\sigma_1$ than $\sigma_2$, a contradiction. Hence, $u_2(\sigma_1,\sigma_2)> -\alpha^*$, that is, $u_1(\sigma_1,\sigma_2)<\alpha^*$. But this means that for a maximin strategy $\sigma^*_1$ of Player 1, $u_1(\sigma^*_1,\sigma_2)\ge \alpha^*>u_1(\sigma_1,\sigma_2)$, showing that $\sigma^*_1$ is a better response against $\sigma_2$ than $\sigma_1$, a contradiction. The analogous argument shows that $\sigma_2$ must be a minimax strategy for Player 2.
 \endproof
 %{\bf To be continued...}
 
@@ -6994,7 +6994,7 @@ The dual form, including slack variables $s\ge 0$, can be written as
                    s     & \geq & 0
 \end{array}
 \end{equation}
-Complementary slackness (Theorem~\ref{theorem::ComplementaySlackness}) in this form asserts that $x\in\Rp^n$ and $(y,s)\in\R^m\times \Rp^n$ if and only if $x^t s=0$. Given that both vectors are nonnegative, this is equivalent to $x_i=0$ or $s_i=0$ for every $i=1,2,\ldots,n$. Moreover, for primal and dual solutions $x\in\Rp^n$ and $(y,s)\in\R^m\times \Rp^n$,  $x^t s$ is the optimality gap between these solutions:
+Complementary slackness (Theorem~\ref{theorem::ComplementaySlackness}) in this form asserts that primal and dual solutions $x\in\Rp^n$ and $(y,s)\in\R^m\times \Rp^n$ are optimal to \eqref{eq::interior_primal_lp} and \eqref{eq::interior_dual_lp}, if and only if $x^t s=0$. Given that both vectors are nonnegative, this is equivalent to $x_i=0$ or $s_i=0$ for every $i=1,2,\ldots,n$. Moreover, for primal and dual solutions $x\in\Rp^n$ and $(y,s)\in\R^m\times \Rp^n$,  $x^t s$ is the optimality gap between these solutions:
 \begin{equation}\label{eq:opt-gap}
 c^t x-b^t y =  (A^t y+s)^t x-b^t y  = y^t A x +s^t x-b^t y=x^t s\, .
 \end{equation}
@@ -7017,7 +7017,7 @@ The LP \eqref{eq::interior_primal_lp} is a constrained optimization problem. The
 \begin{equation}\label{eq:barrier}
 \min_{x\in\R^n\,:\, Ax=b} c^t x-\mu\sum_{i=1}^n \log x_i\, 
 \end{equation}
-The latter term is called the \emph{logarithmic barrier function}. It enforces in particular that $x_i>0$ for all $i=1,2,\ldots,n$. Intuitively, if $\lambda>0$ but is very small, then the solution must be feasible and nearly optimal.
+The latter term is called the \emph{logarithmic barrier function}. It enforces in particular that $x_i>0$ for all $i=1,2,\ldots,n$. Intuitively, if $\mu>0$ but is very small, then the solution must be feasible and nearly optimal.
 
 \linebox{
     \theorem{Assume \eqref{eq::interior_primal_lp} and \eqref{eq::interior_dual_lp} are strictly feasible. Then, for every $\mu>0$, there exists unique solutions $x(\mu)\in \R^n$ to \eqref{eq::interior_primal_lp} and $(y(\mu),s(\mu))\in\R^m\times\R^n$ to \eqref{eq::interior_dual_lp} such that $x(\mu)\in\Primal$ and $(y(\mu),s(\mu))\in\Dual$, and 
@@ -7305,25 +7305,25 @@ For any $A\in\R^{m\times n}$, $x,s,v\in\R^n$, $\mathrm{rank}(A)=m$,
 the system \eqref{eq:pred-cor} has a unique solution $(\Delta x,\Delta y,\Delta s)$, 
 and 
 \[
-    \|\Delta  x\circ \Delta  y\|\le \frac{\|z\circ v\|^2}{2}\le \frac{\|v\|^2}{2\min_{i\in[n]}{x_is_i}}\, .
+    \|\Delta  x\circ \Delta  s\|\le \frac{\|z\circ v\|^2}{2}\le \frac{\|v\|^2}{2\min_{i\in[n]}{x_is_i}}\, .
 \]
 %If $(x,y,s)\in\N(\beta)$, then 
 \end{lemma}
 \prove
 The systems \eqref{eq:pred-cor} and \eqref{eq:pred-cor-scaled} are equivalent. We show that  \eqref{eq:pred-cor-scaled} has a unique solution 
 $(\Delta \hat x,\Delta \hat y,\Delta \hat s)$.
-Let $W=\ker(AD)$ and $W^\perp=\mathrm{im}((AD)^t)$. Then, the first two sets of equations are equivalent to $\Delta \hat x\in W$ and $\Delta \hat s\in W^\perp$ (the role of $y$ is to represent $\Delta \hat s$ is $W^\perp$).
+Let $W=\ker(AD)$ and $W^\perp=\mathrm{im}((AD)^t)$. Then, the first two sets of equations are equivalent to $\Delta \hat x\in W$ and $\Delta \hat s\in W^\perp$ (the role of $\Delta \hat y$ is to represent $\Delta \hat s$ is $W^\perp$).
  Hence, \eqref{eq:pred-cor-scaled} can be interpreted as $\Delta \hat x$ and $\Delta \hat s$ being an orthogonal decomposition of the vector $z\circ v$. Uniqueness of $\Delta\hat x$ and $\Delta \hat s$ in this decomposition follows from
- Proposition~\ref{prop:orth-decomp}. Uniqueness of $\Delta\hat y$ follows because of the assumption $\mathrm{rank}(A)=m$. From Lemma~\ref{lem:orth-decomp-norm}(b), we get that
+ Proposition~\ref{prop:orth-decomp}. Uniqueness of $\Delta\hat y$ follows because of the assumption $\mathrm{rank}(A)=m$. From Lemma~\ref{lem:orth-decomp-norm}, we get that
  \[
-       \|\Delta  \hat x\circ \Delta \hat y\|\le \frac{1}{2}\|z\circ v\|^2\, .
+       \|\Delta  \hat x\circ \Delta \hat s\|\le \frac{1}{2}\|z\circ v\|^2\, .
  \]
 Next, note that
  \[
    \Delta  \hat x\circ \Delta \hat s=(D^{-1}\Delta x)\circ (D\Delta s)=\Delta x\circ \Delta s\, .
  \]
  Using also  
- Lemma~\ref{lem:orth-decomp-norm}(a) for $z$ and $v$,
+ Lemma~\ref{lem:uv}(a) for $z$ and $v$,
  and  that $\|z\|_\infty^2=1/(\min_{i\in [n]}x_is_i)$, we get
  \iffalse by 
  Finally, note that
@@ -7357,9 +7357,9 @@ s\circ \Delta x+x\circ \Delta s=\mu\bo_n-x\circ s\,
 \]
 from \eqref{eq:corrector}. We also used that 
 \[
-    \Delta x^t \Delta s= \Delta x^t(-A^t\Delta y)=(A\Delta x)^t \Delta y=0\, ,
+    \Delta x^t \Delta s= \Delta x^t(-A^t\Delta y)=-(A\Delta x)^t \Delta y=0\, ,
 \]
-or in other words, $\Delta x\in \ker(A)$ and $\Delta x\in\mathrm{im}(A)$ live in orthogonal subspaces.
+or in other words, $\Delta x\in \ker(A)$ and $\Delta s\in\mathrm{im}(A^t)$ live in orthogonal subspaces.
 
 It is left to show that if $z\in\N(1/2)$, then $z'\in\N(1/4)$. We can write 
 \begin{equation}\label{eq:centrality-error}
@@ -7742,7 +7742,7 @@ $\max\{c^t x \mid x \in P_I\}$ is bounded.\\
 
 ``$\Leftarrow$:'' Assume that $\max\{c^t x \mid x \in P\}$ is unbounded.
 Then, the dual LP must be infeasible, so there is no vector $y$ with
-$y^t A = c$ and $y \geq 0$. By Farkas' Lemma (Theorem~\ref{theorem::farkas2}),
+$A^t y = c$ and $y \geq 0$. By Farkas' Lemma (Theorem~\ref{theorem::farkas2}),
 this means that there is a vector $z$ with $c^t z < 0$ and $A z \geq 0$.
 Thus, the LP $\min\{c^t x \mid Ax \geq 0, -\one \leq x \leq \one\}$ is feasible
 and has an optimum solution with negative value. 
@@ -7886,7 +7886,7 @@ which can be done in polynomial time.
 Then, as in the proof of 
 Corollary~\ref{corollary::integral_solution} 
 compute an integer solution of 
-$\left[B \, 0 \right] x = B$ which can be translated
+$\left[B \, 0 \right] x = b$ which can be translated
 into an integer solution of $Ax=b$ provided that 
 we stored the elementary unimodular column operations
 that have been applied.
@@ -7997,8 +7997,8 @@ We only have to compute an integral element of a minimal
 face $F$ consisting of optimum solutions only (for finding $F$
 we can apply the {\sc Ellipsoid Method}). This can be done
 by computing an integral solution of an equation system, which
-can be done in polynomial time due to 
-possible due to Corollary~\ref{corollary::computation_of_integer_solutions}.
+can be done in polynomial time due to
+Corollary~\ref{corollary::computation_of_integer_solutions}.
 \endproof
 
 
